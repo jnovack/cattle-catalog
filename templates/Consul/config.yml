@@ -3,7 +3,7 @@ description: >
   A single scalable consul node
   # Description of the Catalog Entry
 version: 0.1
-category: # Category to be used for searching catalog entries
+category: Configuration
 maintainer: github.com/jnovack
 license: MIT
 projectURL: https://github.com/jnovack/cattle-consul

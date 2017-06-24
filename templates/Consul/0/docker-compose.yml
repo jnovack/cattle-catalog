@@ -1,5 +1,5 @@
 config:
-  image: registry.oz/consul-confd
+  image: registry.oz/consul-confd:latest
   labels:
     io.rancher.container.hostname_override: container_name
   volumes_from:
