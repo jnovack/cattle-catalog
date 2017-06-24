@@ -1,0 +1,33 @@
+.catalog:  
+  name: "Consul"  
+  description: "Secure Consul cluster"  
+  version: "0.1"
+  uuid: 974DB406-D527-4D4A-80CC-B912CC65EBF6  
+  questions:    
+    - variable: gossip_key      
+      label: "Communication gossip key"      
+      type: "multiline"      
+      required: true 
+    - variable: consul_key      
+      label: "Consul key"      
+      type: "multiline"      
+      required: true    
+    - variable: consul_crt      
+      label: "Consul certificate"      
+      type: "multiline"      
+      required: true 
+    - variable: ca_crt     
+      label: "CA certificate"       
+      type: "multiline"      
+      required: true    
+  server:
+    scale: 3  
+  metadata:    
+    enc.key: "${gossip_key}"
+    ca.crt: |            
+      ${ca_crt}    
+    consul1.crt: |            
+      ${consul_crt}    
+    consul1.key: |            
+      ${consul_key}    
+ 
