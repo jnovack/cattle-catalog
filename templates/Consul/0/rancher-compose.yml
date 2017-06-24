@@ -30,3 +30,9 @@ consul-server:
     ozmo: "ozmo"
     ui: "${ui}"
     gossip: "${gossip}"
+    ca: |
+      ${ca_crt}
+    cert: |
+      ${ssl_crt}
+    key: |
+      ${ssl_key}
