@@ -26,13 +26,13 @@ catalog:
       type: "boolean"
       default: false
       required: true
-  consul:
+  consul-config:
     metadata:
       ui.enabled: ${ui}
       enc.key: "${gossip_key}"
       ca.crt: |
         ${ca_crt}
-      consul1.crt: |
+      ssl.crt: |
         ${ssl_crt}
-      consul1.key: |
+      ssl.key: |
         ${ssl_key}
