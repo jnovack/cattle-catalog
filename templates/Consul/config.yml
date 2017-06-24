@@ -1,6 +1,6 @@
 name: Consul
 description: >
-  A single scalable consul node
+  A single scalable consul node.
   # Description of the Catalog Entry
 version: 0.1
 category: Configuration
