@@ -2,6 +2,7 @@ config:
   image: registry.oz/consul-confd:latest
   labels:
     io.rancher.container.hostname_override: container_name
+    io.rancher.container.pull_image: always
   volumes_from:
     - server
   net: "container:server"
