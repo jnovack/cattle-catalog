@@ -26,14 +26,13 @@ catalog:
       type: "boolean"
       default: true
       required: true
-consul-server:
+service:
   metadata:
-    consul-server:
-      ui: "${ui}"
-      gossip: "${gossip}"
-      ca: |
-        ${ca_crt}
-      cert: |
-        ${ssl_crt}
-      key: |
-        ${ssl_key}
+    ui: "${ui}"
+    gossip: "${gossip}"
+    ca: |
+      ${ca_crt}
+    cert: |
+      ${ssl_crt}
+    key: |
+      ${ssl_key}
