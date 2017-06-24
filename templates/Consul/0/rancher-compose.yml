@@ -26,9 +26,9 @@ catalog:
       type: "boolean"
       default: false
       required: true
-consul-config:
+consul-server:
   metadata:
-    consul-config:
+    consul-server:
       ui.enabled: ${ui}
       enc.key: "${gossip_key}"
       ca.crt: |
