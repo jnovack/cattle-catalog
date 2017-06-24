@@ -1,12 +1,3 @@
-consul-config:
-  image: registry.oz/consul-confd:latest
-  labels:
-    io.rancher.container.hostname_override: container_name
-    io.rancher.container.pull_image: always
-  volumes_from:
-    - consul-server
-  net: "container:consul-server"
-
 consul-server:
   image: consul:latest
   command: /bin/sh -c "while [ ! -f '/opt/rancher/config/server.json' ]; do echo 'waiting for /opt/rancher/config/server.json...'; sleep 1; done; exec consul agent -config-file=/opt/rancher/config/server.json -data-dir=/var/consul"
@@ -16,3 +7,12 @@ consul-server:
     - /opt/rancher/ssl
     - /opt/rancher/config
     - /var/consul
+
+consul-config:
+  image: registry.oz/consul-confd:latest
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.pull_image: always
+  volumes_from:
+    - consul-server
+  net: "container:consul-server"
