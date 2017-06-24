@@ -2,7 +2,7 @@
   name: "Consul"
   description: "Minimally Secure Consul cluster"
   version: "0.1"
-  uuid: consul
+  uuid: consul-0
   questions:
     - variable: gossip
       label: "Communication gossip key"
