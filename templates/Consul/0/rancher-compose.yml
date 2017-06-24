@@ -3,9 +3,9 @@ catalog:
   name: "Consul"
   description: "Minimally Secure Consul cluster"
   version: "0.1"
-  uuid: 974DB406-D527-4D4A-80CC-B912CC65EBF6
+  uuid: consul
   questions:
-    - variable: gossip_key
+    - variable: gossip
       label: "Communication gossip key"
       type: "string"
       required: true
@@ -24,16 +24,16 @@ catalog:
     - variable: ui
       label: "Enable UI"
       type: "boolean"
-      default: false
+      default: true
       required: true
 consul-server:
   metadata:
     consul-server:
-      ui.enabled: ${ui}
-      enc.key: "${gossip_key}"
-      ca.crt: |
+      ui: "${ui}"
+      gossip: "${gossip}"
+      ca: |
         ${ca_crt}
-      ssl.crt: |
+      cert: |
         ${ssl_crt}
-      ssl.key: |
+      key: |
         ${ssl_key}
