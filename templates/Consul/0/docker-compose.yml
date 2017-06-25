@@ -2,7 +2,7 @@ version: '2'
 services:
   consul-server:
     image: consul:latest
-    command: /bin/sh -c "while [ ! -f '/opt/rancher/config/server.json' ]; do echo 'waiting for /opt/rancher/config/server.json...'; sleep 1; done; exec consul agent -config-file=/opt/rancher/config/server.json -data-dir=/var/consul"
+    command: /bin/sh -c "while [ ! -f '/opt/rancher/config/server.json' ]; do echo 'waiting for /opt/rancher/config/server.json...'; sleep 1; done; exec consul agent -config-file=/opt/rancher/config/server.json"
     labels:
       io.rancher.sidekicks: consul-config
     ports:
