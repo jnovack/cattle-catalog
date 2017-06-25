@@ -12,6 +12,11 @@
       label: "Datacenter Name"
       type: "string"
       required: true
+    - variable: domain
+      label: "DNS Suffix"
+      type: "string"
+      required: true
+      default: "consul"
     - variable: ui
       label: "Enable UI"
       type: "boolean"
@@ -33,6 +38,7 @@ consul-server:
   metadata:
     ui: "${ui}"
     datacenter: "${datacenter}"
+    domain: "${domain}"
     gossip: "${gossip}"
     ca: |
       ${ca_crt}
