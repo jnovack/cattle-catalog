@@ -12,6 +12,7 @@
       label: "Datacenter Name"
       type: "string"
       required: true
+      default: "dc1"
     - variable: domain
       label: "DNS Suffix"
       type: "string"
