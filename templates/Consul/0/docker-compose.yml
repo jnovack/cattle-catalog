@@ -27,7 +27,12 @@ services:
       io.rancher.container.pull_image: always
     volumes_from:
       - consul-server
-    net: "container:consul-server"
+    network_mode: "container:consul-server"
+
+  webserver:
+    ports:
+      - 8500
+    image: rancher/lb-service-haproxy
 
 volumes:
   consul:

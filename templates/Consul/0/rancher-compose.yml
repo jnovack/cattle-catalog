@@ -35,6 +35,7 @@
       label: "CA Certificate"
       type: "multiline"
       required: true
+
 consul-server:
   metadata:
     ui: "${ui}"
@@ -47,3 +48,18 @@ consul-server:
       ${ssl_crt}
     key: |
       ${ssl_key}
+
+services:
+  webserver:
+    scale: 1
+    lb_config:
+      port_rules:
+        - source_port: 8500
+          target_port: 8500
+          service: consul-server
+    health_check:
+      port: 42
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
