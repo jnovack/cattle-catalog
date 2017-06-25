@@ -30,6 +30,7 @@ catalog:
       required: true
     - variable: default_policy
       label: "ACL Default Policy"
+      type: "enum"
       required: true
       options:
         - allow
