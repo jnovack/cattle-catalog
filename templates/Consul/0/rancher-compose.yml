@@ -32,6 +32,7 @@ catalog:
       label: "ACL Default Policy"
       type: "enum"
       required: true
+      default: "allow"
       options:
         - allow
         - deny
@@ -69,8 +70,9 @@ services:
     scale: 1
     lb_config:
       port_rules:
-        - source_port: 8443
+        - source_port: 443
           target_port: 8443
+          protocol: "tcp"
           service: consul-server
     health_check:
       port: 42
