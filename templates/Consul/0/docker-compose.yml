@@ -16,7 +16,7 @@ consul-server:
   volumes:
     - /opt/rancher/ssl
     - /opt/rancher/config
-    - /var/consul
+    - consul:/var/consul
 
 consul-config:
   image: registry.oz/consul-confd:latest
@@ -26,3 +26,7 @@ consul-config:
   volumes_from:
     - consul-server
   net: "container:consul-server"
+
+volumes:
+  consul:
+    driver: rancher-nfs
