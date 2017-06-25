@@ -21,7 +21,7 @@ services:
 
   webserver:
     ports:
-      - 8500
+      - 8443
     image: rancher/lb-service-haproxy
 
 volumes:

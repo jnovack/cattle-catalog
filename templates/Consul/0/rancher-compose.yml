@@ -9,6 +9,11 @@ catalog:
       label: "Communication gossip key"
       type: "string"
       required: true
+    - variable: ui
+      label: "Enable UI"
+      type: "boolean"
+      default: true
+      required: true
     - variable: datacenter
       label: "Datacenter Name"
       type: "string"
@@ -19,11 +24,16 @@ catalog:
       type: "string"
       required: true
       default: "consul"
-    - variable: ui
-      label: "Enable UI"
-      type: "boolean"
-      default: true
+    - variable: master_token
+      label: "ACL Master Token"
+      type: "password"
       required: true
+    - variable: default_policy
+      label: "ACL Default Policy"
+      required: true
+      options:
+        - allow
+        - deny
     - variable: ssl_key
       label: "SSL Key"
       type: "multiline"
@@ -45,6 +55,8 @@ services:
       datacenter: "${datacenter}"
       domain: "${domain}"
       gossip: "${gossip}"
+      master-token: "${master_token}"
+      default-policy: "${default_policy}"
       ca: |
         ${ca_crt}
       cert: |
@@ -56,8 +68,8 @@ services:
     scale: 1
     lb_config:
       port_rules:
-        - source_port: 8500
-          target_port: 8500
+        - source_port: 8443
+          target_port: 8443
           service: consul-server
     health_check:
       port: 42
