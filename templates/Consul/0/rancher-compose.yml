@@ -8,6 +8,15 @@
       label: "Communication gossip key"
       type: "string"
       required: true
+    - variable: datacenter
+      label: "Datacenter Name"
+      type: "string"
+      required: true
+    - variable: ui
+      label: "Enable UI"
+      type: "boolean"
+      default: true
+      required: true
     - variable: ssl_key
       label: "SSL Key"
       type: "multiline"
@@ -20,15 +29,10 @@
       label: "CA Certificate"
       type: "multiline"
       required: true
-    - variable: ui
-      label: "Enable UI"
-      type: "boolean"
-      default: true
-      required: true
 consul-server:
   metadata:
-    ozmo: "ozmo"
     ui: "${ui}"
+    datacenter: "${datacenter}"
     gossip: "${gossip}"
     ca: |
       ${ca_crt}

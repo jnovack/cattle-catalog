@@ -3,6 +3,14 @@ consul-server:
   command: /bin/sh -c "while [ ! -f '/opt/rancher/config/server.json' ]; do echo 'waiting for /opt/rancher/config/server.json...'; sleep 1; done; exec consul agent -config-file=/opt/rancher/config/server.json -data-dir=/var/consul"
   labels:
     io.rancher.sidekicks: consul-config
+    io.rancher.scheduler.global: 'true'
+  ports:
+    - "8300:8300"
+    - "8301-8302:8301-8302"
+    - "8301-8302:8301-8302/udp"
+    - "8400:8400"
+    - "8500:8500"
+    - "8600:8600/udp"
   volumes:
     - /opt/rancher/ssl
     - /opt/rancher/config
