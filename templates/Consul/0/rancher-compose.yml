@@ -26,7 +26,7 @@ catalog:
       default: "consul"
     - variable: master_token
       label: "ACL Master Token"
-      type: "password"
+      type: "string"
       required: true
     - variable: default_policy
       label: "ACL Default Policy"
