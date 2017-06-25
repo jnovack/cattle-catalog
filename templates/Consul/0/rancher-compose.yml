@@ -1,4 +1,5 @@
-.catalog:
+version: '2'
+catalog:
   name: "Consul"
   description: "Minimally Secure Consul cluster"
   version: "0.1"
