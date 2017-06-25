@@ -37,20 +37,21 @@ catalog:
       type: "multiline"
       required: true
 
-consul-server:
-  metadata:
-    ui: "${ui}"
-    datacenter: "${datacenter}"
-    domain: "${domain}"
-    gossip: "${gossip}"
-    ca: |
-      ${ca_crt}
-    cert: |
-      ${ssl_crt}
-    key: |
-      ${ssl_key}
-
 services:
+  consul-server:
+    scale: 3
+    metadata:
+      ui: "${ui}"
+      datacenter: "${datacenter}"
+      domain: "${domain}"
+      gossip: "${gossip}"
+      ca: |
+        ${ca_crt}
+      cert: |
+        ${ssl_crt}
+      key: |
+        ${ssl_key}
+
   webserver:
     scale: 1
     lb_config:
