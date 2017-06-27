@@ -1,0 +1,27 @@
+version: '2'
+catalog:
+  name: "Registrator"
+  description: "Registrator agent for Consul cluster"
+  version: "0.1"
+  uuid: registrator-0
+  questions:
+    - variable: consul_server
+      label: "Consul server (ip_address[:port])"
+      type: "string"
+      required: true
+    - variable: gossip
+      label: "Communication gossip key"
+      type: "string"
+      required: true
+    - variable: ssl_key
+      label: "SSL Key"
+      type: "multiline"
+      required: true
+    - variable: ssl_crt
+      label: "SSL Certificate"
+      type: "multiline"
+      required: true
+    - variable: ca_crt
+      label: "CA Certificate"
+      type: "multiline"
+      required: true

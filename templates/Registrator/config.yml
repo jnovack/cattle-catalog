@@ -1,0 +1,8 @@
+name: Registrator
+description: >
+  Registrator client for Consul
+version: 0.1
+category: Configuration
+maintainer: github.com/jnovack
+license: MIT
+projectURL: https://github.com/jnovack/cattle-catalog
