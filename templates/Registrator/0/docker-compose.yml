@@ -9,7 +9,7 @@ services:
     restart: always
     command:
       - "consul-tls://${consul_server}"
-    image: gliderlabs/registrator:latest
+    image: gliderlabs/registrator:master
     network_mode: "host"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
