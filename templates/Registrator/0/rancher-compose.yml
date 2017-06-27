@@ -6,11 +6,11 @@ catalog:
   uuid: registrator-0
   questions:
     - variable: consul_server
-      label: "Consul server (ip_address[:port])"
+      label: "Consul server with port (ip_address:port)"
       type: "string"
       required: true
-    - variable: gossip
-      label: "Communication gossip key"
+    - variable: acl_token
+      label: "ACL Token"
       type: "string"
       required: true
     - variable: ssl_key

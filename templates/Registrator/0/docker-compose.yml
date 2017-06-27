@@ -9,12 +9,12 @@ services:
     restart: always
     command:
       - "consul-tls://${consul_server}"
-      - "-tags=$HOSTNAME"
     image: gliderlabs/registrator:latest
     network_mode: "host"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
     environment:
+      - CONSUL_HTTP_TOKEN=${acl_token}
       - CONSUL_CACERT=${ca_crt}
       - CONSUL_TLSCERT=${ssl_crt}
       - CONSUL_TLSKEY=${ssl_key}
