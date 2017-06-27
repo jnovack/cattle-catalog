@@ -16,6 +16,6 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
     environment:
-      - CONSUL_CACERT: ${ca_crt}
-      - CONSUL_TLSCERT: ${ssl_crt}
-      - CONSUL_TLSKEY: ${ssl_key}
+      - CONSUL_CACERT=${ca_crt}
+      - CONSUL_TLSCERT=${ssl_crt}
+      - CONSUL_TLSKEY=${ssl_key}
