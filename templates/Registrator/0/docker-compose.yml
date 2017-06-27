@@ -27,4 +27,3 @@ services:
       io.rancher.container.pull_image: always
     volumes_from:
       - registrator
-    network_mode: "container:registrator"
