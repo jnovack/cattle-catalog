@@ -8,8 +8,7 @@ services:
       io.rancher.sidekicks: registrator-config
     tty: true
     restart: always
-    entrypoint:
-      - "/bin/registrator consul-tls://${consul_server}"
+    entrypoint: /bin/sh -c "while [ ! -f '/ssl.key' ]; do echo 'waiting for certs...'; sleep 1; done; exec registrator consul-tls://${consul_server}"
     image: gliderlabs/registrator:master
     network_mode: "host"
     volumes:
