@@ -7,14 +7,20 @@ services:
       io.rancher.container.hostname_override: container_name
     tty: true
     restart: always
-    command:
-      - "consul-tls://${consul_server}"
+    entrypoint:
+      - "echo $CONSUL_CACERT > /ca.crt && "
+      - "echo $CONSUL_TLSCERT > /ssl.crt && "
+      - "echo $CONSUL_TLSKEY > /ssl.crt && "
+      - "/bin/registrator consul-tls://${consul_server}"
     image: gliderlabs/registrator:master
     network_mode: "host"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
     environment:
       - CONSUL_HTTP_TOKEN=${acl_token}
-      - CONSUL_CACERT=${ca_crt}
-      - CONSUL_TLSCERT=${ssl_crt}
-      - CONSUL_TLSKEY=${ssl_key}
+      - CACERT=${ca_crt}
+      - TLSCERT=${ssl_crt}
+      - TLSKEY=${ssl_key}
+      - CONSUL_CACERT=/ca.crt
+      - CONSUL_TLSCERT=/ssl.crt
+      - CONSUL_TLSKEY=/ssl.key
