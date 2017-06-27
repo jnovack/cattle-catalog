@@ -6,7 +6,7 @@ catalog:
   uuid: registrator-0
   questions:
     - variable: consul_server
-      label: "Consul server with port (ip_address:port)"
+      label: "Consul server (address:port)"
       type: "string"
       required: true
     - variable: acl_token
@@ -25,3 +25,13 @@ catalog:
       label: "CA Certificate"
       type: "multiline"
       required: true
+
+services:
+  registrator:
+    metadata:
+      ca: |
+        ${ca_crt}
+      cert: |
+        ${ssl_crt}
+      key: |
+        ${ssl_key}

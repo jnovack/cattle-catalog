@@ -1,26 +1,31 @@
 version: '2'
 services:
-  agent:
+  registrator:
     labels:
       io.rancher.scheduler.global: 'true'
       io.rancher.container.pull_image: always
       io.rancher.container.hostname_override: container_name
+      io.rancher.sidekicks: registrator-config
     tty: true
     restart: always
     entrypoint:
-      - "echo $CONSUL_CACERT > /ca.crt && "
-      - "echo $CONSUL_TLSCERT > /ssl.crt && "
-      - "echo $CONSUL_TLSKEY > /ssl.crt && "
       - "/bin/registrator consul-tls://${consul_server}"
     image: gliderlabs/registrator:master
     network_mode: "host"
     volumes:
+      - /certs
       - /var/run/docker.sock:/tmp/docker.sock
     environment:
       - CONSUL_HTTP_TOKEN=${acl_token}
-      - CACERT=${ca_crt}
-      - TLSCERT=${ssl_crt}
-      - TLSKEY=${ssl_key}
-      - CONSUL_CACERT=/ca.crt
-      - CONSUL_TLSCERT=/ssl.crt
-      - CONSUL_TLSKEY=/ssl.key
+      - CONSUL_CACERT=/certs/ca.crt
+      - CONSUL_TLSCERT=/certs/ssl.crt
+      - CONSUL_TLSKEY=/certs/ssl.key
+
+  registrator-config:
+    image: registry.oz/registrator-confd:latest
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.pull_image: always
+    volumes_from:
+      - registrator
+    network_mode: "container:registrator"
