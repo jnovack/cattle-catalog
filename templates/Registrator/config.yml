@@ -1,7 +1,7 @@
 name: Registrator
 description: >
   Registrator client for Consul
-version: 0.1
+version: 0.8-alpha.2
 category: Configuration
 maintainer: github.com/jnovack
 license: MIT
