@@ -1,7 +1,7 @@
 name: Consul
 description: >
   A single scalable consul node.
-version: 0.8.5-rancher
+version: 0.8.5
 category: Configuration
 maintainer: github.com/jnovack
 license: MIT
