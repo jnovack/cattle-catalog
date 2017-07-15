@@ -2,7 +2,7 @@ version: '2'
 catalog:
   name: "Consul"
   description: "Minimally Secure Consul cluster"
-  version: "0.1"
+  version: "0.8.5"
   uuid: consul-0
   questions:
     - variable: gossip
