@@ -5,6 +5,7 @@ services:
     command: /bin/sh -c "while [ ! -f '/opt/rancher/config/server.json' ]; do echo 'waiting for /opt/rancher/config/server.json...'; sleep 1; done; exec consul agent -config-file=/opt/rancher/config/server.json"
     labels:
       io.rancher.sidekicks: consul-config
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
     volumes:
       - /opt/rancher/ssl
       - /opt/rancher/config
