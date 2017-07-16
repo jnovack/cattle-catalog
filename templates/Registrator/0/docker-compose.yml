@@ -8,8 +8,8 @@ services:
       io.rancher.sidekicks: registrator-config
     tty: true
     restart: always
-    entrypoint: /bin/sh -c "while [ ! -f '/certs/ssl.key' ]; do echo 'waiting for certs...'; sleep 1; done; exec registrator consul-tls://${consul_server}"
-    image: jnovack/registrator:v8-alpha.2
+    entrypoint: /bin/sh -c "while [ ! -f '/certs/ssl.key' ]; do echo 'waiting for certs...'; sleep 1; done; exec registrator -internal -retry-attempts -1 -cleanup consul-tls://${consul_server}"
+    image: jnovack/registrator:v8-alpha.1
     network_mode: "host"
     volumes:
       - /certs
