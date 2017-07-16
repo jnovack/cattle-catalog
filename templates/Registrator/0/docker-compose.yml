@@ -10,11 +10,6 @@ services:
     restart: always
     entrypoint: /bin/sh -c "while [ ! -f '/certs/ssl.key' ]; do echo 'waiting for certs...'; sleep 1; done; exec registrator -internal -retry-attempts -1 -cleanup consul-tls://${consul_server}"
     image: jnovack/registrator:v8-alpha.1
-    network_mode: "host"
-    dns:
-      - 169.254.169.250
-    dns_search:
-      - rancher.internal
     volumes:
       - /certs
       - /var/run/docker.sock:/tmp/docker.sock
